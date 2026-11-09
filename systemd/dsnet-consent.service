@@ -1,0 +1,15 @@
+[Unit]
+Description=Renew DSNet (MS AGH) accommodation consent
+# Credentials are read by the script from off-repo locations only:
+#   ~/.config/dsnet-consent/credentials.env (0600) or DSNET_EMAIL/DSNET_PASSWORD.
+# Never put credentials in this unit file.
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 @REPO_DIR@/renew_consent.py
+# Hardening: no new privileges, private /tmp, no network beyond what the script needs.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=%h/.local/state/dsnet-consent %h/.config/dsnet-consent
+ProtectHome=read-only

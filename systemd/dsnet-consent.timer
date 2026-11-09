@@ -1,0 +1,12 @@
+[Unit]
+Description=Renew DSNet accommodation consent every 48h10m
+
+[Timer]
+# 173400s = 48h 10min between activations of the service.
+OnUnitActiveSec=173400
+OnBootSec=600
+Persistent=true
+Unit=dsnet-consent.service
+
+[Install]
+WantedBy=timers.target

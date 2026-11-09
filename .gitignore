@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# DSNet consent renewal — local secrets/state must never enter the repo
+# (the script keeps them in ~/.config and ~/.local/state, but block them here too)
+credentials.env
+*.credentials
+*.secret
+dsnet-consent.local/
